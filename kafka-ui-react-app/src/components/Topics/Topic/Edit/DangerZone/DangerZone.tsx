@@ -6,12 +6,12 @@ import { FormError } from 'components/common/Input/Input.styled';
 import { InputLabel } from 'components/common/Input/InputLabel.styled';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
+import { RouteParamsClusterTopic } from 'lib/paths';
 
 import * as S from './DangerZone.styled';
 
 export interface Props {
-  clusterName: string;
-  topicName: string;
   defaultPartitions: number;
   defaultReplicationFactor: number;
   partitionsCountIncreased: boolean;
@@ -29,8 +29,6 @@ export interface Props {
 }
 
 const DangerZone: React.FC<Props> = ({
-  clusterName,
-  topicName,
   defaultPartitions,
   defaultReplicationFactor,
   partitionsCountIncreased,
@@ -38,6 +36,8 @@ const DangerZone: React.FC<Props> = ({
   updateTopicPartitionsCount,
   updateTopicReplicationFactor,
 }) => {
+  const { clusterName, topicName } = useParams<RouteParamsClusterTopic>();
+
   const [isPartitionsConfirmationVisible, setIsPartitionsConfirmationVisible] =
     React.useState<boolean>(false);
   const [

@@ -1,16 +1,15 @@
-import Editor from 'components/common/Editor/Editor';
-import PageLoader from 'components/common/PageLoader/PageLoader';
 import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
-import { clusterTopicMessagesPath } from 'lib/paths';
+import { clusterTopicMessagesPath, RouteParamsClusterTopic } from 'lib/paths';
 import jsf from 'json-schema-faker';
 import { fetchTopicMessageSchema, messagesApiClient } from 'redux/actions';
 import { useAppDispatch, useAppSelector } from 'lib/hooks/redux';
 import { alertAdded } from 'redux/reducers/alerts/alertsSlice';
 import { now } from 'lodash';
 import { Button } from 'components/common/Button/Button';
-import { ClusterName, TopicName } from 'redux/interfaces';
+import Editor from 'components/common/Editor/Editor';
+import PageLoader from 'components/common/PageLoader/PageLoader';
 import {
   getMessageSchemaByTopicName,
   getPartitionsByTopicName,
@@ -20,14 +19,9 @@ import {
 import validateMessage from './validateMessage';
 import * as S from './SendMessage.styled';
 
-interface RouterParams {
-  clusterName: ClusterName;
-  topicName: TopicName;
-}
-
 const SendMessage: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { clusterName, topicName } = useParams<RouterParams>();
+  const { clusterName, topicName } = useParams<RouteParamsClusterTopic>();
   const history = useHistory();
 
   jsf.option('fillProperties', false);

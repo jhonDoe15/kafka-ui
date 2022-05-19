@@ -30,11 +30,6 @@ export interface Props {
     topicName: TopicName,
     form: TopicFormDataRaw
   ) => void;
-  updateTopicPartitionsCount: (
-    clusterName: string,
-    topicname: string,
-    partitions: number
-  ) => void;
 }
 
 const EditWrapperStyled = styled.div`

@@ -45,9 +45,7 @@ const renderComponent = async () => {
     render(
       <>
         <Router history={history}>
-          <Route
-            path={clusterTopicSendMessagePath(':clusterName', ':topicName')}
-          >
+          <Route path={clusterTopicSendMessagePath()}>
             <SendMessage />
           </Route>
         </Router>

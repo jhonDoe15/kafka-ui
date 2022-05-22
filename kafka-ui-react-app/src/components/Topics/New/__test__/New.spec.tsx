@@ -30,19 +30,17 @@ const createTopicAPIPath = `/api/clusters/${clusterName}/topics`;
 const renderComponent = (history = historyMock, store = storeMock) =>
   render(
     <Router history={history}>
-      <Route path={clusterTopicNewPath(':clusterName')}>
+      <Route path={clusterTopicNewPath()}>
         <Provider store={store}>
           <New />
         </Provider>
       </Route>
-      <Route path={clusterTopicCopyPath(':clusterName')}>
+      <Route path={clusterTopicCopyPath()}>
         <Provider store={store}>
           <New />
         </Provider>
       </Route>
-      <Route path={clusterTopicPath(':clusterName', ':topicName')}>
-        New topic path
-      </Route>
+      <Route path={clusterTopicPath()}>New topic path</Route>
     </Router>
   );
 
